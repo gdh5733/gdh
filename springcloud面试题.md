@@ -18,16 +18,15 @@
 **3.springCloud和Dubbo有那些区别?**
 
 ```
-
+都是服务治理的框架
+eureka是CP  ZK是AP
 ```
-
 
 **4.springBoot和springCloud,请你谈谈对他们的理解**
 
 ```
-
+springCloud 是基于springboot基础上构建的
 ```
-
 
 **5.什么是服务熔断？ 什么是服务降级?  服务雪崩?**
 
@@ -47,7 +46,6 @@
 
              
 ```
-
 
 **6.微服务的优点和缺点是什么? 说一下你在项目中遇到的坑**
 
