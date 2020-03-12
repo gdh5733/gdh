@@ -38,7 +38,7 @@ public final native boolean compareAndSwapInt(Object var1, long var2, int var4, 
 运用：
 
 ```java
-package com.mashibing.jol;
+package com.alan.jol;
 
 import sun.misc.Unsafe;
 

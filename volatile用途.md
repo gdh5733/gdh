@@ -3,7 +3,7 @@
 ## 1.线程可见性
 
 ```java
-package com.mashibing.testvolatile;
+package com.alan.testvolatile;
 
 public class T01_ThreadVisibility {
     private static volatile boolean flag = true;
@@ -79,12 +79,11 @@ public class T01_ThreadVisibility {
 
 * 伪共享
   
-
 * 合并写
   CPU内部的4个字节的Buffer
 
   ```java
-  package com.mashibing.juc.c_029_WriteCombining;
+  package com.alan.juc.c_029_WriteCombining;
   
   public final class WriteCombining {
   
@@ -153,7 +152,7 @@ public class T01_ThreadVisibility {
 * 指令重排序
 
   ```java
-  package com.mashibing.jvm.c3_jmm;
+  package com.alan.jvm.c3_jmm;
   
   public class T04_Disorder {
       private static int x = 0, y = 0;
