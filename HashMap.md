@@ -1,4 +1,10 @@
-```java
+
+
+
+
+### HashMap（源码及扩容分析）
+
+~~~java
 package com.alan.demo.utils.collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -136,4 +142,56 @@ public class MapTest {
 
 
 }
-```
+~~~
+
+
+
+### HashMap常用的方法
+
+~~~java
+Object get(Object key): 获取指定key对应的value
+    
+boolean containKey(Object key): 是否包含指定的key
+    
+boolean containsValue(Object value): 是否包含指定的value
+
+int size(): 返回map中key-value.
+    00对的个数
+
+boolean isEmpty(): 判断map是否为空
+
+boolean equalas(Object obj): 判断当前map和参数对象obj是否相等  
+    
+Set keySet(): 返回所有key构成的Set集合
+    
+Collection values(): 返回所有value构成的Collection集合
+    
+Set entrySet(): 返回所有key-value构成的Set集合    
+~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

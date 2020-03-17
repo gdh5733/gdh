@@ -2,7 +2,7 @@
 
 ## 索引优化
 
-```
+```sql
 1.最佳左前缀法则
 2.不在索引列上做任何操作(计算，函数（自动or手动)类型转换，会导致索引失效而转向全表扫描
 3.存储引擎不能使用索引中范围条件右边的列
@@ -37,7 +37,7 @@ where a= 3 and b like 'k%kk%' and c= 4 | Y,使用到a,b,c
 ## [优化总结口诀]
 
 
-```
+```mysql
 全值匹配我最爱,最左前缀要遵守
 
 带头大哥不能死,中间兄弟不能断
@@ -51,7 +51,7 @@ LIKE百分写最后,覆盖索引不写星
 
 ## 查询优化的步骤
 
-```
+```mysql
 1.观察，至少跑一天，看看生产的慢SQL情况
 
 2.开启慢查询日志，设置阀值，比如超过5秒中的就是慢SQL,并将它抓取出来
@@ -72,7 +72,7 @@ LIKE百分写最后,覆盖索引不写星
 
 ## 小表驱动大表
 
-```
+```mysql
 优化原则: 小表驱动大表,即小的数据集驱动大的数据集
 
 #######################原理(RBO)############################
@@ -107,7 +107,7 @@ select... FROM table where exists (subquery)
 
 ## ORDER BY 优化
 
-```
+```mysql
 order by子句,尽量使用Index方式排序,避免使用FileSort方式排序
 尽可能在索引列上完成排序操作,遵照索引建立的最佳左前缀
 filesort 和 index , index效率高
@@ -127,7 +127,7 @@ mysql就要启动双路排序和单路排序
 
 ## GROUP BY
 
-```
+```mysql
 1.group by 实质是先排序后进行分组,遵照索引建的最佳左前缀
 
 2.当无法使用索引列,增大max_length_for_sort_data参数的设置+增大sort_buffer_size参数的设置
@@ -137,7 +137,7 @@ mysql就要启动双路排序和单路排序
 
 ## 慢查询日志
 
-```
+```mysql
 日志分析工具
 
 mysqldumpslow
@@ -150,7 +150,7 @@ mysqldumpslow
 
 ## SHOW PROFILE
 
-```
+```mysql
 查看一个SQL 执行的完整生命周期
 
 结论: 当Status列出现以下的时候  需要优化
@@ -169,7 +169,7 @@ locked
 
 ## 数据库读写锁
 
-```
+```mysql
 MySQL的表级锁有两种模式:
 
 表共享读锁(Table Read Lock)
@@ -187,7 +187,7 @@ MySQL的表级锁有两种模式:
 
 ## 【如何分析表锁定】
 
-```
+```mysql
 可以通过检查table_locks_waited和table_locks_immediate状态变量来分析系统上的表锁定
 
 SQL: show status like 'table%';

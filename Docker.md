@@ -85,6 +85,8 @@ docker commit -m "提交的描述信息" -a="作者" 容器ID 要创建的目标
 ~~~dockerfile
 FROM   - 基础镜像,当前新镜像是基于那个镜像的
 
+
+
 MAINTAINER - 镜像维护者的姓名和邮箱地址
 
 RUN  - 容器构建时需要运行的命令
