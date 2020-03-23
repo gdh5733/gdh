@@ -41,7 +41,7 @@ Java -XX:+PrintFlagsInitial
 
 #### 5.查看默认使用那个垃圾回收器
 
-~~~
+~~~java
 Java -XX:+PrintCommandLineFlags -version
 ~~~
 

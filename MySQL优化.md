@@ -1,5 +1,7 @@
 # Mysql数据库
 
+## 
+
 ## 索引优化
 
 ```sql
@@ -229,6 +231,66 @@ Table_locks_waited： 出现表级锁定争用而发生等待的次数(不能立
 
 
 
+
+
+
+## Mysql数据库和锁
+
+### 1.事务的特点
+
+![image-20200319191422967](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191422967.png)
+
+
+
+
+
+
+
+![image-20200319191458104](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191458104.png)
+
+
+
+### 2.原子性实现原理
+
+![image-20200319191552733](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191552733.png)
+
+
+
+### 3.持久性实现原理
+
+![image-20200319191632968](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191632968.png)
+
+
+
+![image-20200319191702905](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191702905.png)
+
+
+
+### 4.Mysql的隔离级别
+
+![image-20200319191745723](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191745723.png)
+
+
+
+
+
+![image-20200319191810514](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191810514.png)
+
+
+
+### 5.隔离性实现原理
+
+
+
+![image-20200319191856122](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191856122.png)
+
+
+
+
+
+# SQL语句大全
+
+https://www.cnblogs.com/cangqiongbingchen/p/4530333.html
 
 
 

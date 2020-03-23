@@ -113,7 +113,6 @@ public class CyclicBarrierDemo {
 
 ~~~java
 package com.alan.demo.utils.juc.同步工具;
-
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
@@ -1520,6 +1519,14 @@ public class WhatReentrant {
 
 
 ### 八.AQS
+
+~~~
+是实现自旋锁的框架
+~~~
+
+
+
+
 
 
 

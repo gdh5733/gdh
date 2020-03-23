@@ -12,7 +12,7 @@
 
 ### 常见数据类型操作命令
 
-1.key
+#### 1.key
 
 ![image-20200304123808800](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304123808800.png)
 
@@ -20,7 +20,7 @@
 
 
 
-2.String![image-20200304124725275](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304124725275.png)
+#### 2.String![image-20200304124725275](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304124725275.png)
 
 
 
@@ -28,13 +28,13 @@
 
 
 
-3.List
+#### 3.List
 
 ![image-20200304143729369](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304143729369.png)
 
    参考连接 https://www.cnblogs.com/xinhuaxuan/p/9252111.html
 
-4.Set
+#### 4.Set
 
 ![image-20200304145321203](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304145321203.png)
 
@@ -42,7 +42,7 @@
 
 
 
-5.Hash
+#### 5.Hash
 
 ![image-20200304153017220](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304153017220.png)
 
@@ -54,7 +54,7 @@
 
 
 
-6.ZSet
+#### 6.ZSet
 
 ![image-20200304154056149](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304154056149.png)
 
@@ -100,13 +100,13 @@
 
 ### Redis的持久化
 
-RDB
+#### 1.RDB
 
 ![image-20200304164049476](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304164049476.png)
 
 
 
-AOF
+#### 2.AOF
 
 ![image-20200304183237348](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200304183237348.png)
 
