@@ -2,7 +2,7 @@
 
 ## 
 
-## 索引优化
+## 一.索引优化
 
 ```sql
 1.最佳左前缀法则
@@ -19,7 +19,7 @@
 9.少用or，用它来连接的时候会索引失效
 ```
 
-## 索引优化列子
+### 2.索引优化列子
 
 假设index(a,b,c)
 
@@ -36,7 +36,7 @@ where a= 3 and b like '%kk' and c= 4 |Y,只用到a
 where a= 3 and b like '%kk%' and c= 4 | Y,只用到a
 where a= 3 and b like 'k%kk%' and c= 4 | Y,使用到a,b,c 
 
-## [优化总结口诀]
+### 3.[优化总结口诀]
 
 
 ```mysql
@@ -51,7 +51,7 @@ LIKE百分写最后,覆盖索引不写星
 不等空值还有or,索引失效要少用
 ```
 
-## 查询优化的步骤
+### 4.查询优化的步骤
 
 ```mysql
 1.观察，至少跑一天，看看生产的慢SQL情况
@@ -72,7 +72,7 @@ LIKE百分写最后,覆盖索引不写星
 4. SQL数据库服务器的参数调优
 ```
 
-## 小表驱动大表
+### 5.小表驱动大表
 
 ```mysql
 优化原则: 小表驱动大表,即小的数据集驱动大的数据集
@@ -107,7 +107,7 @@ select... FROM table where exists (subquery)
 需要具体问题具体分析
 ```
 
-## ORDER BY 优化
+### 6.ORDER BY 优化
 
 ```mysql
 order by子句,尽量使用Index方式排序,避免使用FileSort方式排序
@@ -127,7 +127,7 @@ mysql就要启动双路排序和单路排序
 
 ```
 
-## GROUP BY
+### 7.GROUP BY
 
 ```mysql
 1.group by 实质是先排序后进行分组,遵照索引建的最佳左前缀
@@ -137,7 +137,7 @@ mysql就要启动双路排序和单路排序
 3.where高于having,能写在where限定的条件就不要去having限定了
 ```
 
-## 慢查询日志
+### 8.慢查询日志
 
 ```mysql
 日志分析工具
@@ -150,7 +150,7 @@ mysqldumpslow
 批量数据脚本
 ```
 
-## SHOW PROFILE
+### 9.SHOW PROFILE
 
 ```mysql
 查看一个SQL 执行的完整生命周期
@@ -169,7 +169,7 @@ locked
 
 ```
 
-## 数据库读写锁
+## 二.数据库读写锁
 
 ```mysql
 MySQL的表级锁有两种模式:
@@ -187,7 +187,7 @@ MySQL的表级锁有两种模式:
 简而言之,就是读锁会阻塞写,但是不会阻塞读,而写锁则会把读和写都阻塞
 ```
 
-## 【如何分析表锁定】
+### 1.【如何分析表锁定】
 
 ```mysql
 可以通过检查table_locks_waited和table_locks_immediate状态变量来分析系统上的表锁定
@@ -204,7 +204,7 @@ Table_locks_waited： 出现表级锁定争用而发生等待的次数(不能立
 
 
 
-### SQL执行顺序
+### 2.SQL执行顺序
 
 ~~~sql
 1.FROM  <left_table>
@@ -234,7 +234,7 @@ Table_locks_waited： 出现表级锁定争用而发生等待的次数(不能立
 
 
 
-## Mysql数据库和锁
+### 3.Mysql事务和锁
 
 ### 1.事务的特点
 
@@ -283,6 +283,14 @@ Table_locks_waited： 出现表级锁定争用而发生等待的次数(不能立
 
 
 ![image-20200319191856122](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319191856122.png)
+
+
+
+## 三.MySQL索引底层数据结构
+
+
+
+
 
 
 

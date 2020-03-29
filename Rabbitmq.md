@@ -38,13 +38,13 @@ Simple 队列 是一一对应的,而且我们实际开发,生产者发送消息�
 
 #### 1.Fanout(不处理路由键)
 
-![image-20200319203404997](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319203404997.png)
+![image-20200326153546856](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200326153546856.png)
 
 
 
 #### 2.Direct(处理路由键)
 
-![image-20200319203715278](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319203715278.png)
+![image-20200326153653674](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200326153653674.png)
 
 
 
@@ -54,19 +54,17 @@ Simple 队列 是一一对应的,而且我们实际开发,生产者发送消息�
 
 #### 3.Topic exchange
 
-![image-20200319204543395](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319204543395.png)
-
-### 5.routing 路由选择  通配符模式
+![image-20200326153614277](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200326153614277.png)
 
 
 
-### 6.Topics 主题
+### 5.Topics 主题
 
-### 7.手动和自动确认
+### 6.手动和自动确认
 
 ![image-20200319200053833](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319200053833.png)
 
-### 8.消息应答与持久化
+### 7.消息应答与持久化
 
 ![image-20200319200055133](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319200055133.png)
 
@@ -76,18 +74,124 @@ Simple 队列 是一一对应的,而且我们实际开发,生产者发送消息�
 
 ![image-20200319200706191](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200319200706191.png)
 
-### 9.rabbitmq的延迟队列
+## 
 
-## 二.Spring AMQP Spring-Rabbit
+### 8.消息确认机制
 
-
-
-## 三.场景demo  MQ实现搜索引擎DIH增量
+![image-20200328175000142](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328175000142.png)
 
 
 
-## 四.场景demo 未支付订单30分钟 取消
+
+
+![image-20200328175248790](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328175248790.png)
 
 
 
-## 五.大数据应用 类似百度统计 cnzz架构消息队列
+
+
+![image-20200328174126215](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328174126215.png)
+
+
+
+
+
+![image-20200328174624679](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328174624679.png)
+
+
+
+#### 1.代码
+
+~~~java
+package com.atguigu.gulimall.ware.listener;
+import com.atguigu.common.to.mq.OrderTo;
+import com.atguigu.common.to.mq.StockLockedTo;
+import com.atguigu.gulimall.ware.service.WareSkuService;
+import com.rabbitmq.client.Channel;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+
+@Service
+@RabbitListener(queues = "stock.release.stock.queue")
+public class StockReleaseListener {
+
+    @Autowired
+    WareSkuService wareSkuService;
+
+    @RabbitHandler
+    public void handleStockLockedRelease(StockLockedTo to, Message message, Channel channel) throws IOException {
+
+        System.out.println("收到解锁库存的消息...");
+        try{
+            //当前消息是否被第二次及以后（重新）派发过来了。
+//            Boolean redelivered = message.getMessageProperties().getRedelivered();
+            wareSkuService.unlockStock(to);
+            //回复成功 只回复本条消息
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+        }catch (Exception e){
+            channel.basicReject(message.getMessageProperties().getDeliveryTag(),true);
+        }
+
+    }
+
+    @RabbitHandler
+    public void handleOrderCloseRelease(OrderTo orderTo, Message message, Channel channel) throws IOException {
+        System.out.println("订单关闭准备解锁库存...");
+        try{
+            wareSkuService.unlockStock(orderTo);
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+        }catch (Exception e){
+
+            //回复消息处理失败,拒绝消息。并且重新入队
+            channel.basicReject(message.getMessageProperties().getDeliveryTag(),true);
+        }
+
+    }
+
+}
+~~~
+
+
+
+
+
+#### 2.延时队列(可以实现定时关单)
+
+![image-20200328182521474](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328182521474.png)
+
+
+
+#### 3.延时队列实现-1
+
+
+
+![image-20200328182849679](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328182849679.png)
+
+
+
+![image-20200328230353025](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328230353025.png)
+
+
+
+#### 4.接口幂等性
+
+~~~java
+举个列子解释
+
+当信息确认完成以后下一步要提交订单,我们必须做放重复验证【接口幂等性】
+    
+接口幂等性设计:
+ select:
+ insert/delete/update【幂等性设计】
+    
+~~~
+
+
+
+
+

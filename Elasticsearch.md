@@ -1,4 +1,4 @@
-# aseEleaseSearch
+# EleaseSearch
 
 ## 一.倒排索引
 
@@ -121,3 +121,27 @@
 ![image-20200323182901265](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200323182901265.png)
 
 ![image-20200323182109149](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200323182109149.png)
+
+
+
+### 3.水平扩容
+
+
+
+![image-20200323202336264](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200323202336264.png)
+
+
+
+![image-20200323202458923](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200323202458923.png)
+
+### 4.脑裂问题
+
+
+
+![image-20200323202942400](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200323202942400.png)
+
+
+
+### 5.解决脑裂问题
+
+![image-20200323203435026](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200323203435026.png)

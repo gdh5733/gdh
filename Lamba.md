@@ -12,7 +12,7 @@
 
 # Stream
 
-
+## 1.中间操作
 
 ![image-20200320164215831](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200320164215831.png)
 
@@ -24,11 +24,13 @@
 
 
 
-
+## 2.终止操作
 
 ![image-20200320214833784](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200320214833784.png)
 
 
+
+## 3.并行流与顺序流
 
 
 
@@ -38,7 +40,7 @@
 
 
 
-
+## 4.Optional类
 
 ![image-20200321120943536](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200321120943536.png)
 

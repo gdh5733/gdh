@@ -39,3 +39,65 @@
 
 ![image-20200313114544651](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200313114544651.png)
 
+
+
+
+
+#### 1.事务的传播行为
+
+![image-20200328140707765](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328140707765.png)
+
+
+
+![image-20200328140814771](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328140814771.png)
+
+
+
+
+
+![image-20200328140908185](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328140908185.png)
+
+
+
+![image-20200328141331676](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328141331676.png)
+
+
+
+
+
+![image-20200328141403977](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328141403977.png)
+
+
+
+
+
+##### 1.如何让某些可以不回滚
+
+![image-20200328141708664](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328141708664.png)
+
+
+
+![image-20200328141724571](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328141724571.png)
+
+
+
+![image-20200328142018624](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328142018624.png)
+
+
+
+
+
+##### 2.访问调用本类方法事务不生效解决方案
+
+![image-20200328151620628](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328151620628.png)
+
+
+
+
+
+![image-20200328151700131](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200328151700131.png)
+
+
+
+#### 2.事务的隔离级别
+
