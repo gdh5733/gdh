@@ -1,4 +1,4 @@
-### Docker重要命令
+## Docker
 
 
 
@@ -19,7 +19,7 @@ docker logs -f -t --tail 容器ID
 
 -t 是加入时间戳
 -f 跟随最新的日志打印
---tail 数字 显示最后多少条
+--tail 数字 显示最后多少条 
 ~~~
 
 
@@ -145,7 +145,7 @@ CMD /bin/bash
 
 ##### 2.构建
 
-~~~docker
+~~~shell
 如果是在dockerfile是在 /mydocker/Dockerfile.txt
 
 docker build -f /mydocker/Dockerfile -t myimage:1.3.
@@ -170,7 +170,130 @@ docker build -t 新镜像的名字:TAG.
 
 
 
+## Docker Compose（服务编排）
 
 
 
+#### 一.服务编排
+
+![image-20200331121818351](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200331121818351.png)
+
+
+
+![image-20200331122008691](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200331122008691.png)
+
+#### 二.使用docker compose编排nginx+springboot项目
+
+##### 1.创建docker-compose目录
+
+~~~shell
+mkdir ~/docker-compose
+cd ~/docker-compose
+~~~
+
+
+
+##### 2.编写docker-compose.yml文件
+
+~~~yml
+version: '3'
+services:
+  nginx:
+    image: nginx
+    ports:
+     - 80:80
+    links:
+     - app
+    volumes:
+     - ./nginx/conf.d:/etc/nginx/conf.d
+  app:
+   image: app
+   expose:
+    - "8080"
+
+~~~
+
+
+
+##### 3.创建 ./nginx/conf.d目录
+
+~~~shell
+mkdir -p /nginx/conf.d
+~~~
+
+
+
+##### 4.在./nginx/conf.d目录下编写itheima.conf文件
+
+~~~yml
+server {
+    listen 80;
+    access_log off;
+    
+    location / {
+       proxy_pass http://app:8080;
+    }
+}
+~~~
+
+
+
+##### 5.在~/docker-compose目录下使用docker-compose启动容器
+
+~~~shell
+docker-compose up
+~~~
+
+
+
+##### 6.测试访问
+
+~~~shell
+http://192.168.149.135/hello
+~~~
+
+
+
+## Docker私有仓库
+
+### 一.私有仓库搭建
+
+~~~shell
+# 1.拉取私有仓库镜像
+docker pull registry
+
+#2.启动私有仓库容器
+docker run -id --name=registry -p 5000:5000 registry
+
+#3.打开浏览器 输入地址http://私有仓库服务器ip:5000/v2/_catalog,看到{"repositories":[]} 表示私有仓库 搭建成功
+
+#4. 修改daemon.json
+vim /etc/docker/daemon.json
+
+#在上述文件中添加一个key,保存退出.此步用于让docker 信任私有仓库地址; 注意将私有仓库服务器ip修改为自己私有仓库服务器真是ip
+{"insecure-registries":["私有仓库服务器ip:5000"]}
+ 
+#5 重启docker 服务
+systemctl restart docker
+docker start registry
+
+~~~
+
+
+
+### 二.将镜像上传至私有仓库
+
+~~~shell
+# 1.标记镜像为私有仓库的镜像
+docker tag centos:7 私有仓库服务器IP:5000/centos:7
+
+# 2.上传标记的镜像
+docker push 私有仓库服务器IP:5000/centos:7
+~~~
+
+
+
+列子：
+
+![image-20200331140755082](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200331140755082.png)
 

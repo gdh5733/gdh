@@ -86,3 +86,38 @@ https://zhuanlan.zhihu.com/p/35738376
 
 ![image-20200327180925900](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200327180925900.png)
 
+
+
+
+
+# 三.单点登录三种常用方式
+
+![image-20200405190532136](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200405190532136.png)
+
+
+
+
+
+
+
+![image-20200405192055877](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200405192055877.png)
+
+### 登录流程
+
+#### 1.基于jwt规则实现（正常登录）
+
+![image-20200406141035311](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200406141035311.png)
+
+
+
+#### 2.微信登录（第三方登录，基于OAuth2）
+
+
+
+![image-20200406153838370](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200406153838370.png)
+
+
+
+
+
+![image-20200406154133269](C:\Users\Dehan.Gao\AppData\Roaming\Typora\typora-user-images\image-20200406154133269.png)
